@@ -2,6 +2,7 @@ package com.baomili.mall.modules.admin.service;
 
 import com.baomili.mall.modules.admin.model.UmsUserBase;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UmsUserBaseService extends IService<UmsUserBase> {
 
+    UmsUserBaseVo getUserInfoByUserId(Integer userId);
 }

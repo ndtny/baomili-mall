@@ -20,4 +20,9 @@
         <result column="status" property="status" />
     </resultMap>
 
+    <select id="getUserInfoByUserId" resultType="com.baomili.mall.modules.admin.vo.UmsUserBaseVo">
+        select id, username, avatar, phone_number, email, nick_name, remark, last_login_time, status
+        from ums_user_base
+        where id = #{userId} and status = 1
+    </select>
 </mapper>

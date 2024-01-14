@@ -2,6 +2,7 @@ package com.baomili.mall.modules.admin.controller;
 
 import com.baomili.mall.modules.admin.service.UmsUserAuthService;
 import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
+import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
 import com.baomili.mall.modules.common.api.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,9 +29,9 @@ public class UmsUserAuthController {
     private UmsUserAuthService userAuthService;
 
     @PostMapping("/login")
-    public CommonResult login(@RequestBody UmsUserAuthVo userAuthVo) {
-        userAuthService.login(userAuthVo);
-        return CommonResult.success();
+    public CommonResult<UmsUserBaseVo> login(@RequestBody UmsUserAuthVo userAuthVo) {
+        UmsUserBaseVo umsUserBaseVo = userAuthService.login(userAuthVo);
+        return CommonResult.success(umsUserBaseVo);
     }
 
 }

@@ -5,7 +5,7 @@ spring:
   application:
     name: baomili-mall
   datasource:
-    url: jdbc:mysql://124.70.206.3:3306/baomili-mall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://124.70.206.3:3306/baomili_mall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: mysql970615...
   redis:

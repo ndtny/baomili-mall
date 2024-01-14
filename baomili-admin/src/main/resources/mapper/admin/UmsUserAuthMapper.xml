@@ -16,7 +16,7 @@
     </resultMap>
 
     <select id="getUserAuthByIdentityIdAndCredential" resultType="com.baomili.mall.modules.admin.vo.UmsUserAuthVo">
-        select iz, user_id, identity_type, identitier
+        select id, user_id, identity_type, credential
         from ums_user_auth
         where identity_id = #{identityId} and credential = #{credential}
     </select>

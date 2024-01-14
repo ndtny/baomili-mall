@@ -32,7 +32,7 @@ public class UmsUserAuthVo implements Serializable {
     private Integer userId;
 
     @ApiModelProperty(value = "登录类型（密码、手机号、邮箱、第三方登录）")
-    private Integer identityType;
+    private String identityType;
 
     @ApiModelProperty(value = "账号、手机号、邮箱、第三方唯一标识")
     private String identityId;
