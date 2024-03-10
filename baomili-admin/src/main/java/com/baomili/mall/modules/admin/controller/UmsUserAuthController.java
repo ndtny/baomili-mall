@@ -3,15 +3,16 @@ package com.baomili.mall.modules.admin.controller;
 import com.baomili.mall.modules.admin.service.UmsUserAuthService;
 import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
 import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
+import com.baomili.mall.modules.admin.vo.UserInfo;
 import com.baomili.mall.modules.common.api.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>
@@ -32,6 +33,17 @@ public class UmsUserAuthController {
     public CommonResult<UmsUserBaseVo> login(@RequestBody UmsUserAuthVo userAuthVo) {
         UmsUserBaseVo umsUserBaseVo = userAuthService.login(userAuthVo);
         return CommonResult.success(umsUserBaseVo);
+    }
+
+    @GetMapping("info")
+    public CommonResult<UserInfo> getUserInfo(String username) {
+        UserInfo userInfo = new UserInfo();
+        List<String> roles = new ArrayList<>();
+        roles.add("admin");
+        roles.add("other");
+        userInfo.setName(username);
+        userInfo.setRoles(roles);
+        return CommonResult.success(userInfo);
     }
 
 }

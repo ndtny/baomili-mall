@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.admin.service.UmsUserBaseService;
 import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
 import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +24,7 @@ import javax.annotation.Resource;
  * @since 2024-01-07
  */
 @Service
+@Slf4j
 public class UmsUserAuthServiceImpl extends ServiceImpl<UmsUserAuthMapper, UmsUserAuth> implements UmsUserAuthService {
 
     @Resource
@@ -32,7 +35,7 @@ public class UmsUserAuthServiceImpl extends ServiceImpl<UmsUserAuthMapper, UmsUs
 
     @Override
     public UmsUserBaseVo login(UmsUserAuthVo userAuthVo) {
-        if(UserAuthConstant.IdentityType.PASSWORD.getValue().equals(userAuthVo.getIdentityType())) {
+//        if(UserAuthConstant.IdentityType.PASSWORD.getValue().equals(userAuthVo.getIdentityType())) {
             String identityId = userAuthVo.getIdentityId();
             String credential = userAuthVo.getCredential();
             UmsUserAuthVo umsUserAuthVo = umsUserAuthMapper.getUserAuthByIdentityIdAndCredential(identityId, credential);
@@ -44,7 +47,7 @@ public class UmsUserAuthServiceImpl extends ServiceImpl<UmsUserAuthMapper, UmsUs
                 throw new RuntimeException("该用户状态已关闭，请联系管理员");
             }
             return umsUserBaseVo;
-        }
-        return null;
+//        }
+//        return null;
     }
 }

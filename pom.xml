@@ -12,6 +12,8 @@
         <module>baomili-admin</module>
         <module>baomili-common</module>
         <module>baomili-generator</module>
+        <module>baomili-product</module>
+        <module>baomili-order</module>
     </modules>
 
     <properties>

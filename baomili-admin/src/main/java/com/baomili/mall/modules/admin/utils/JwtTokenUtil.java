@@ -28,12 +28,16 @@ public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "user_name";
     private static final String CLAIM_KEY_CREATED = "created";
-    @Value("${jwt.secret}")
-    private String secret;
-    @Value("${jwt.expiration}")
-    private Long expiration;
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;
+//    @Value("${jwt.secret}")
+//    private String secret;
+//    @Value("${jwt.expiration}")
+//    private Long expiration;
+//    @Value("${jwt.tokenHead}")
+//    private String tokenHead;
+
+    private static final String secret = "123";
+    private static final Long expiration = 100L;
+    private static final String tokenHead = "Bear ";
 
     /**
      * 根据负责生成JWT的token
