@@ -1,15 +1,12 @@
 package com.baomili.mall.modules.admin.service.impl;
 
-import com.baomili.mall.modules.admin.constant.UserAuthConstant;
 import com.baomili.mall.modules.admin.model.UmsUserAuth;
 import com.baomili.mall.modules.admin.mapper.UmsUserAuthMapper;
-import com.baomili.mall.modules.admin.model.UmsUserBase;
 import com.baomili.mall.modules.admin.service.UmsUserAuthService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.admin.service.UmsUserBaseService;
 import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
 import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
