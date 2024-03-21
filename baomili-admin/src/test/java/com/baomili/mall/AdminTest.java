@@ -1,7 +1,5 @@
 package com.baomili.mall;
 
-import org.apache.catalina.Lifecycle;
-import org.apache.catalina.core.StandardServer;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cglib.proxy.Enhancer;

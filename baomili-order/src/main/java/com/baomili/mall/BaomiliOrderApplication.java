@@ -1,7 +1,11 @@
 package com.baomili.mall;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class BaomiliOrderApplication {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SpringApplication.run(BaomiliOrderApplication.class);
     }
 }

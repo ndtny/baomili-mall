@@ -5,15 +5,11 @@ import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
 import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
 import com.baomili.mall.modules.admin.vo.UserInfo;
 import com.baomili.mall.modules.common.api.CommonResult;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * <p>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/baomili-admin/baomili-admin.iml" filepath="$PROJECT_DIR$/baomili-admin/baomili-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-auth-center/baomili-auth-center.iml" filepath="$PROJECT_DIR$/baomili-auth-center/baomili-auth-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-cart/baomili-cart.iml" filepath="$PROJECT_DIR$/baomili-cart/baomili-cart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-common/baomili-common.iml" filepath="$PROJECT_DIR$/baomili-common/baomili-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-gateway/baomili-gateway.iml" filepath="$PROJECT_DIR$/baomili-gateway/baomili-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-generator/baomili-generator.iml" filepath="$PROJECT_DIR$/baomili-generator/baomili-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-mall.iml" filepath="$PROJECT_DIR$/baomili-mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-member/baomili-member.iml" filepath="$PROJECT_DIR$/baomili-member/baomili-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-order/baomili-order.iml" filepath="$PROJECT_DIR$/baomili-order/baomili-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-portal/baomili-portal.iml" filepath="$PROJECT_DIR$/baomili-portal/baomili-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-product/baomili-product.iml" filepath="$PROJECT_DIR$/baomili-product/baomili-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-promotion/baomili-promotion.iml" filepath="$PROJECT_DIR$/baomili-promotion/baomili-promotion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-search/baomili-search.iml" filepath="$PROJECT_DIR$/baomili-search/baomili-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baomili-security/baomili-security.iml" filepath="$PROJECT_DIR$/baomili-security/baomili-security.iml" />
+    </modules>
+  </component>
+</project>

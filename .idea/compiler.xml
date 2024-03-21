@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="baomili-security" />
+        <module name="baomili-gateway" />
+        <module name="baomili-portal" />
+        <module name="baomili-order" />
+        <module name="baomili-common" />
+        <module name="baomili-generator" />
+        <module name="baomili-cart" />
+        <module name="baomili-product" />
+        <module name="baomili-search" />
+        <module name="baomili-member" />
+        <module name="baomili-auth-center" />
+        <module name="baomili-admin" />
+        <module name="baomili-promotion" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="baomili-admin" target="1.8" />
+      <module name="baomili-auth-center" target="1.8" />
+      <module name="baomili-cart" target="1.8" />
+      <module name="baomili-common" target="1.8" />
+      <module name="baomili-gateway" target="1.8" />
+      <module name="baomili-generator" target="1.8" />
+      <module name="baomili-mall" target="1.8" />
+      <module name="baomili-member" target="1.8" />
+      <module name="baomili-order" target="1.8" />
+      <module name="baomili-portal" target="1.8" />
+      <module name="baomili-product" target="1.8" />
+      <module name="baomili-promotion" target="1.8" />
+      <module name="baomili-search" target="1.8" />
+      <module name="baomili-security" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="baomili-admin" options="-parameters" />
+      <module name="baomili-auth-center" options="-parameters" />
+      <module name="baomili-cart" options="-parameters" />
+      <module name="baomili-common" options="-parameters" />
+      <module name="baomili-gateway" options="-parameters" />
+      <module name="baomili-generator" options="-parameters" />
+      <module name="baomili-member" options="-parameters" />
+      <module name="baomili-order" options="-parameters" />
+      <module name="baomili-portal" options="-parameters" />
+      <module name="baomili-product" options="-parameters" />
+      <module name="baomili-promotion" options="-parameters" />
+      <module name="baomili-search" options="-parameters" />
+      <module name="baomili-security" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -8,21 +8,41 @@
     <artifactId>baomili-mall</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>baomili-mall</name>
+    <description>苞米粒电商项目</description>
+
     <modules>
         <module>baomili-admin</module>
         <module>baomili-common</module>
         <module>baomili-generator</module>
         <module>baomili-product</module>
         <module>baomili-order</module>
+        <module>baomili-auth-center</module>
+        <module>baomili-cart</module>
+        <module>baomili-gateway</module>
+        <module>baomili-member</module>
+        <module>baomili-portal</module>
+        <module>baomili-promotion</module>
+        <module>baomili-search</module>
+        <module>baomili-security</module>
     </modules>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.12.RELEASE</version>
+    </parent>
+
     <properties>
+        <skipTests>true</skipTests>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <druid.version>1.1.10</druid.version>
         <hutool.version>4.5.7</hutool.version>
+        <freemarker.version>2.3.30</freemarker.version>
+        <dynamic-datasource.version>3.3.2</dynamic-datasource.version>
         <swagger2.version>2.9.2</swagger2.version>
         <swagger-models.version>1.6.0</swagger-models.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
@@ -31,30 +51,25 @@
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <velocity.version>2.2</velocity.version>
         <lombok.version>1.18.16</lombok.version>
-        <mall.common.version>1.0-SNAPSHOT</mall.common.version>
         <spring-cloud-dependencies.version>Hoxton.SR12</spring-cloud-dependencies.version>
         <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
+        <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
+        <pagehelper.version>5.1.8</pagehelper.version>
+        <aliyun-oss.version>2.5.0</aliyun-oss.version>
+        <logstash-logback.version>5.3</logstash-logback.version>
+        <commons-pool2.version>2.4.3</commons-pool2.version>
+        <rocketmq-spring-boot-starter.version>2.2.1</rocketmq-spring-boot-starter.version>
+        <mongodb-spring-boot-starter.version>2.3.2.RELEASE</mongodb-spring-boot-starter.version>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.12.RELEASE</version>
-    </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>spring-cloud-dependencies.version</version>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
@@ -70,14 +85,36 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter</artifactId>
-                <version>2.1.3.RELEASE</version>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>2.2.9.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>2.2.4.RELEASE</version>
             </dependency>
             <!--工具类和通用类-->
             <dependency>
                 <groupId>com.baomili.mall</groupId>
                 <artifactId>baomili-common</artifactId>
-                <version>${mall.common.version}</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomili.mall</groupId>
+                <artifactId>baomili-security</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!--MyBatis分页插件starter-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-starter.version}</version>
+            </dependency>
+            <!--MyBatis分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
             <!--集成druid连接池-->
             <dependency>
@@ -133,6 +170,11 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--                <version>${dynamic-datasource.version}</version>-->
+<!--            </dependency>-->
             <!--MyBatis Plus 依赖-->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -146,27 +188,60 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
             <!--Velocity模板引擎-->
-            <dependency>
-                <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity-engine-core</artifactId>
-                <version>${velocity.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.apache.velocity</groupId>-->
+<!--                <artifactId>velocity-engine-core</artifactId>-->
+<!--                <version>${velocity.version}</version>-->
+<!--            </dependency>-->
             <!--jwt-->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
+            <!-- 阿里云OSS -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
+            </dependency>
+            <!--集成logstash-->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${mongodb-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>2.3.12.RELEASE</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
 
 </project>

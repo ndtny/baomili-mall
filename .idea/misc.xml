@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/baomili-security/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-auth-center/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-member/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-order/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-portal/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-product/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-promotion/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-search/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-common/pom.xml" />
+        <option value="$PROJECT_DIR$/baomili-admin/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

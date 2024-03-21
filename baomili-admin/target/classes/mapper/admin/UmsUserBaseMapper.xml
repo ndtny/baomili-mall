@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomili.mall.modules.admin.mapper.UmsUserBaseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baomili.mall.modules.admin.model.UmsUserBase">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="avatar" property="avatar" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="email" property="email" />
+        <result column="nick_name" property="nickName" />
+        <result column="remark" property="remark" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_by" property="updatedBy" />
+        <result column="updated_time" property="updatedTime" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <select id="getUserInfoByUserId" resultType="com.baomili.mall.modules.admin.vo.UmsUserBaseVo">
+        select id, username, avatar, phone_number, email, nick_name, remark, last_login_time, status
+        from ums_user_base
+        where id = #{userId} and status = 1
+    </select>
+</mapper>

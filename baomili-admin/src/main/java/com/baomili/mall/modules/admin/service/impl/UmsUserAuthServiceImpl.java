@@ -32,7 +32,6 @@ public class UmsUserAuthServiceImpl extends ServiceImpl<UmsUserAuthMapper, UmsUs
 
     @Override
     public UmsUserBaseVo login(UmsUserAuthVo userAuthVo) {
-//        if(UserAuthConstant.IdentityType.PASSWORD.getValue().equals(userAuthVo.getIdentityType())) {
             String identityId = userAuthVo.getIdentityId();
             String credential = userAuthVo.getCredential();
             UmsUserAuthVo umsUserAuthVo = umsUserAuthMapper.getUserAuthByIdentityIdAndCredential(identityId, credential);
@@ -44,7 +43,5 @@ public class UmsUserAuthServiceImpl extends ServiceImpl<UmsUserAuthMapper, UmsUs
                 throw new RuntimeException("该用户状态已关闭，请联系管理员");
             }
             return umsUserBaseVo;
-//        }
-//        return null;
     }
 }
