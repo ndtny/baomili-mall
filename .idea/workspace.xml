@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6597f379-02fd-4148-9043-a4f465949161" name="Changes" comment="服务搭建&amp;maven依赖" />
+    <list default="true" id="6597f379-02fd-4148-9043-a4f465949161" name="Changes" comment="服务搭建&amp;maven依赖">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-admin/baomili-admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-admin/baomili-admin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-auth-center/baomili-auth-center.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-auth-center/baomili-auth-center.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-cart/baomili-cart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-cart/baomili-cart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-common/baomili-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-common/baomili-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-gateway/baomili-gateway.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-gateway/baomili-gateway.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-generator/baomili-generator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-generator/baomili-generator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-generator/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-generator/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-member/baomili-member.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-member/baomili-member.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-order/baomili-order.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-order/baomili-order.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-portal/baomili-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-portal/baomili-portal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-product/baomili-product.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-product/baomili-product.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-promotion/baomili-promotion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-promotion/baomili-promotion.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-search/baomili-search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-search/baomili-search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baomili-security/baomili-security.iml" beforeDir="false" afterPath="$PROJECT_DIR$/baomili-security/baomili-security.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,31 +65,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/project/baomili-mall",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "b8889ea4e1e40785d31c4547f6308904",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/baomili-mall&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b8889ea4e1e40785d31c4547f6308904&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\project\baomili-mall" />
@@ -90,7 +110,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BaomiliAdminApplication">
+  <component name="RunManager" selected="Application.BaomiliGeneratorApplication">
     <configuration name="AdminTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.baomili.mall.AdminTest" />
       <module name="baomili-admin" />
@@ -146,6 +166,19 @@
     <configuration name="AdminTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.baomili.mall.AdminTest" />
       <module name="baomili-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baomili.mall.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BaomiliGeneratorApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.baomili.mall.BaomiliGeneratorApplication" />
+      <module name="baomili-generator" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.baomili.mall.*" />
@@ -190,12 +223,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.BaomiliGeneratorApplication" />
       <item itemvalue="Application.AdminTest" />
       <item itemvalue="Spring Boot.BaomiliProductApplication" />
       <item itemvalue="Spring Boot.BaomiliAdminApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BaomiliGeneratorApplication" />
         <item itemvalue="Spring Boot.BaomiliAdminApplication" />
         <item itemvalue="Application.AdminTest" />
       </list>
@@ -241,7 +276,8 @@
       <workItem from="1710946440721" duration="3851000" />
       <workItem from="1711025258780" duration="49000" />
       <workItem from="1711025379052" duration="4880000" />
-      <workItem from="1711030272288" duration="605000" />
+      <workItem from="1711030272288" duration="1146000" />
+      <workItem from="1711032402428" duration="2244000" />
     </task>
     <task id="LOCAL-00001" summary="简易login">
       <created>1705249505198</created>
@@ -278,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711031110983</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="服务搭建&amp;maven依赖">
+      <created>1711031137464</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711031137464</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,12 +339,29 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="简易login" />
     <MESSAGE value="产品和订单基础模块" />
     <MESSAGE value="maven" />
     <MESSAGE value="pom" />
     <MESSAGE value="服务搭建&amp;maven依赖" />
     <option name="LAST_COMMIT_MESSAGE" value="服务搭建&amp;maven依赖" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/baomili-generator/src/main/java/com/baomili/mall/BaomiliGeneratorApplication.java</url>
+          <line>21</line>
+          <properties class="com.baomili.mall.BaomiliGeneratorApplication" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
