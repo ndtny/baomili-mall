@@ -1,9 +1,9 @@
 server:
-  port: 8101
+  port: 8844
 
 spring:
   application:
-    name: baomili-mall
+    name: baomili-order
   datasource:
     dynamic:
       #设置默认的数据源或者数据源组,默认值即为master

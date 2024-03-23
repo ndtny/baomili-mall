@@ -25,6 +25,8 @@
         <module>baomili-promotion</module>
         <module>baomili-search</module>
         <module>baomili-security</module>
+        <module>baomili-redis-common</module>
+        <module>baomili-unique-id</module>
     </modules>
 
     <parent>
@@ -53,8 +55,6 @@
         <lombok.version>1.18.16</lombok.version>
         <spring-cloud-dependencies.version>Hoxton.SR12</spring-cloud-dependencies.version>
         <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
-        <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
-        <pagehelper.version>5.1.8</pagehelper.version>
         <aliyun-oss.version>2.5.0</aliyun-oss.version>
         <logstash-logback.version>5.3</logstash-logback.version>
         <commons-pool2.version>2.4.3</commons-pool2.version>
@@ -101,20 +101,13 @@
             </dependency>
             <dependency>
                 <groupId>com.baomili.mall</groupId>
-                <artifactId>baomili-security</artifactId>
+                <artifactId>baomili-redis-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <!--MyBatis分页插件starter-->
             <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper-starter.version}</version>
-            </dependency>
-            <!--MyBatis分页插件-->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper.version}</version>
+                <groupId>com.baomili.mall</groupId>
+                <artifactId>baomili-security</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <!--集成druid连接池-->
             <dependency>
