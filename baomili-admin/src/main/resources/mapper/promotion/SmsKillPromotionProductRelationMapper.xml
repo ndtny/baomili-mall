@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomili.mall.modules.promotion.mapper.SmsKillPromotionProductRelationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baomili.mall.modules.promotion.model.SmsKillPromotionProductRelation">
+        <id column="id" property="id" />
+        <result column="kill_promotion_id" property="killPromotionId" />
+        <result column="kill_promotion_session_id" property="killPromotionSessionId" />
+        <result column="product_id" property="productId" />
+        <result column="kill_promotion_price" property="killPromotionPrice" />
+        <result column="kill_promotion_count" property="killPromotionCount" />
+        <result column="kill_promotion_limit" property="killPromotionLimit" />
+        <result column="sort" property="sort" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_by" property="modifiedBy" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="delete_status" property="deleteStatus" />
+    </resultMap>
+
+</mapper>

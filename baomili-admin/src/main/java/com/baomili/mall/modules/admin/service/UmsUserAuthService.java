@@ -2,8 +2,6 @@ package com.baomili.mall.modules.admin.service;
 
 import com.baomili.mall.modules.admin.model.UmsUserAuth;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomili.mall.modules.admin.vo.UmsUserAuthVo;
-import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
 
 /**
  * <p>
@@ -11,8 +9,8 @@ import com.baomili.mall.modules.admin.vo.UmsUserBaseVo;
  * </p>
  *
  * @author David
- * @since 2024-01-07
+ * @since 2024-03-23
  */
 public interface UmsUserAuthService extends IService<UmsUserAuth> {
-    UmsUserBaseVo login(UmsUserAuthVo userAuthVo);
+
 }

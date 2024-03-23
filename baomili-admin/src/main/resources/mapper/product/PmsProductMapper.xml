@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomili.mall.modules.product.mapper.PmsProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baomili.mall.modules.product.model.PmsProduct">
+        <id column="id" property="id" />
+        <result column="product_number" property="productNumber" />
+        <result column="product_name" property="productName" />
+        <result column="product_sub_title" property="productSubTitle" />
+        <result column="master_pic" property="masterPic" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="product_category_id" property="productCategoryId" />
+        <result column="product_category_name" property="productCategoryName" />
+        <result column="feight_template_id" property="feightTemplateId" />
+        <result column="product_attribute_category_id" property="productAttributeCategoryId" />
+        <result column="unit" property="unit" />
+        <result column="weight" property="weight" />
+        <result column="sort" property="sort" />
+        <result column="sale" property="sale" />
+        <result column="price" property="price" />
+        <result column="promotion_price" property="promotionPrice" />
+        <result column="gift_growth" property="giftGrowth" />
+        <result column="gift_point" property="giftPoint" />
+        <result column="use_point_limit" property="usePointLimit" />
+        <result column="promotion_buy_limit" property="promotionBuyLimit" />
+        <result column="description" property="description" />
+        <result column="stock" property="stock" />
+        <result column="stock_warning" property="stockWarning" />
+        <result column="product_services" property="productServices" />
+        <result column="remark" property="remark" />
+        <result column="detail_title" property="detailTitle" />
+        <result column="detail_description" property="detailDescription" />
+        <result column="promotion_start_time" property="promotionStartTime" />
+        <result column="promotion_end_time" property="promotionEndTime" />
+        <result column="promotion_type" property="promotionType" />
+        <result column="audit_status" property="auditStatus" />
+        <result column="publish_status" property="publishStatus" />
+        <result column="preview_status" property="previewStatus" />
+        <result column="new_status" property="newStatus" />
+        <result column="recommand_status" property="recommandStatus" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_by" property="modifiedBy" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="delete_status" property="deleteStatus" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomili.mall.modules.order.mapper.OmsOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baomili.mall.modules.order.model.OmsOrder">
+        <id column="id" property="id" />
+        <result column="member_id" property="memberId" />
+        <result column="member_name" property="memberName" />
+        <result column="order_number" property="orderNumber" />
+        <result column="total_amount" property="totalAmount" />
+        <result column="pay_amount" property="payAmount" />
+        <result column="freight_amount" property="freightAmount" />
+        <result column="promotion_amount" property="promotionAmount" />
+        <result column="integration_amount" property="integrationAmount" />
+        <result column="discount_amount" property="discountAmount" />
+        <result column="use_integration" property="useIntegration" />
+        <result column="pay_type" property="payType" />
+        <result column="source_type" property="sourceType" />
+        <result column="status" property="status" />
+        <result column="order_type" property="orderType" />
+        <result column="delivery_company" property="deliveryCompany" />
+        <result column="delivery_number" property="deliveryNumber" />
+        <result column="integration" property="integration" />
+        <result column="growth" property="growth" />
+        <result column="bill_type" property="billType" />
+        <result column="bill_header" property="billHeader" />
+        <result column="bill_content" property="billContent" />
+        <result column="bill_receiver_phone" property="billReceiverPhone" />
+        <result column="bill_receiver_email" property="billReceiverEmail" />
+        <result column="receive_user" property="receiveUser" />
+        <result column="phone" property="phone" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="region" property="region" />
+        <result column="detail_address" property="detailAddress" />
+        <result column="remark" property="remark" />
+        <result column="confirm_status" property="confirmStatus" />
+        <result column="auto_confirm_day" property="autoConfirmDay" />
+        <result column="payment_time" property="paymentTime" />
+        <result column="delivery_time" property="deliveryTime" />
+        <result column="receive_time" property="receiveTime" />
+        <result column="comment_time" property="commentTime" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="delete_status" property="deleteStatus" />
+    </resultMap>
+
+</mapper>
