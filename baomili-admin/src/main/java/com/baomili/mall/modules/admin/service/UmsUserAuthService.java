@@ -1,5 +1,6 @@
 package com.baomili.mall.modules.admin.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomili.mall.modules.admin.model.UmsUserAuth;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author David
  * @since 2024-03-23
  */
+@DS("ums")
 public interface UmsUserAuthService extends IService<UmsUserAuth> {
 
 }

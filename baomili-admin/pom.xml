@@ -68,25 +68,25 @@
             <artifactId>freemarker</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.baomili.mall</groupId>
-            <artifactId>baomili-security</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>mybatis-spring</artifactId>
-                    <groupId>org.mybatis</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>pagehelper-spring-boot-starter</artifactId>
-                    <groupId>com.github.pagehelper</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
 <!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--            <groupId>com.baomili.mall</groupId>-->
+<!--            <artifactId>baomili-security</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>mybatis-spring</artifactId>-->
+<!--                    <groupId>org.mybatis</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>pagehelper-spring-boot-starter</artifactId>-->
+<!--                    <groupId>com.github.pagehelper</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

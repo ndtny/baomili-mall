@@ -1,9 +1,15 @@
 package com.baomili.mall.modules.admin.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.baomili.mall.modules.admin.dto.UmsUserAuthDto;
+import com.baomili.mall.modules.admin.dto.UmsUserDto;
+import com.baomili.mall.modules.admin.service.UmsUserService;
+import com.baomili.mall.modules.admin.vo.UmsUserVo;
+import com.baomili.mall.modules.common.api.CommonResult;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,6 +22,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin/umsUser")
 public class UmsUserController {
+
+    @Resource
+    private UmsUserService umsUserService;
+
+    @ApiOperation("用户注册")
+    @PostMapping("/register")
+    public CommonResult<UmsUserVo> register(@RequestBody UmsUserDto userDto) {
+        UmsUserVo umsUserVo = null;
+        try {
+            umsUserVo = umsUserService.register(userDto);
+        } catch (Exception e) {
+            return CommonResult.failed(e.getMessage());
+        }
+        return CommonResult.success(umsUserVo);
+    }
+
+    @ApiOperation("用户登录")
+    @PostMapping("/login")
+    public CommonResult<UmsUserVo> login(@RequestBody UmsUserAuthDto userAuthDto) {
+        UmsUserVo umsUserVo = null;
+        try {
+            umsUserVo = umsUserService.login(userAuthDto);
+        } catch (Exception e) {
+            return CommonResult.failed(e.getMessage());
+        }
+        return CommonResult.success(umsUserVo);
+    }
 
 }
 
