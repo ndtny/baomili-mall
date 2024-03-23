@@ -92,7 +92,7 @@ public class UmsUserServiceImpl extends ServiceImpl<UmsUserMapper, UmsUser> impl
         log.info("login 登录 入参：{}", userAuthDto);
 
         QueryWrapper<UmsUserAuth> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("identity_id", queryWrapper);
+        queryWrapper.eq("identity_id", userAuthDto.getIdentityId());
         UmsUserAuth userAuth = umsUserAuthService.getOne(queryWrapper);
         log.info("login 登录 匹配用户：{}", userAuth);
 
@@ -107,7 +107,7 @@ public class UmsUserServiceImpl extends ServiceImpl<UmsUserMapper, UmsUser> impl
         }
 
         QueryWrapper<UmsUser> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id", userAuth.getUserId());
+        wrapper.eq("id", userAuth.getUserId());
         UmsUser umsUser = umsUserMapper.selectOne(wrapper);
         UmsUserVo umsUserVo = new UmsUserVo();
         BeanUtils.copyProperties(umsUser, umsUserVo);

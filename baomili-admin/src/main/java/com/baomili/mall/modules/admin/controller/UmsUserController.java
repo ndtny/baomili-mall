@@ -5,11 +5,14 @@ import com.baomili.mall.modules.admin.dto.UmsUserAuthDto;
 import com.baomili.mall.modules.admin.dto.UmsUserDto;
 import com.baomili.mall.modules.admin.service.UmsUserService;
 import com.baomili.mall.modules.admin.vo.UmsUserVo;
+import com.baomili.mall.modules.admin.vo.UserInfo;
 import com.baomili.mall.modules.common.api.CommonResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -48,6 +51,17 @@ public class UmsUserController {
             return CommonResult.failed(e.getMessage());
         }
         return CommonResult.success(umsUserVo);
+    }
+
+    @GetMapping("info")
+    public CommonResult<UserInfo> getUserInfo(String username) {
+        UserInfo userInfo = new UserInfo();
+        List<String> roles = new ArrayList<>();
+        roles.add("admin");
+        roles.add("other");
+        userInfo.setName(username);
+        userInfo.setRoles(roles);
+        return CommonResult.success(userInfo);
     }
 
 }
