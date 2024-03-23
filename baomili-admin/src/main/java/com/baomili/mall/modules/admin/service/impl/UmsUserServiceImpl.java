@@ -114,4 +114,9 @@ public class UmsUserServiceImpl extends ServiceImpl<UmsUserMapper, UmsUser> impl
         log.error("login 登录成功：{}", umsUserVo);
         return umsUserVo;
     }
+
+    @Override
+    public void logout(String token) {
+        log.info("logout 退出成功");
+    }
 }

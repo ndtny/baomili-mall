@@ -53,6 +53,13 @@ public class UmsUserController {
         return CommonResult.success(umsUserVo);
     }
 
+    @ApiOperation("用户退出")
+    @PostMapping("/logout")
+    public CommonResult logout(@RequestParam String token) {
+        umsUserService.logout(token);
+        return CommonResult.success();
+    }
+
     @GetMapping("info")
     public CommonResult<UserInfo> getUserInfo(String username) {
         UserInfo userInfo = new UserInfo();
