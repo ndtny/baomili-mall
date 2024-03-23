@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author David
- * @since 2024-01-07
+ * @since 2024-03-23
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -31,10 +31,10 @@ public class UmsUserAuth implements Serializable {
     private Long id;
 
     @ApiModelProperty(value = "用户id")
-    private Integer userId;
+    private Long userId;
 
     @ApiModelProperty(value = "登录类型（密码、手机号、邮箱、第三方登录）")
-    private Integer identityType;
+    private String identityType;
 
     @ApiModelProperty(value = "账号、手机号、邮箱、第三方唯一标识")
     private String identityId;
@@ -43,16 +43,16 @@ public class UmsUserAuth implements Serializable {
     private String credential;
 
     @ApiModelProperty(value = "创建人")
-    private String createdBy;
+    private String createBy;
 
     @ApiModelProperty(value = "创建时间")
-    private Date createdTime;
+    private Date createTime;
 
     @ApiModelProperty(value = "更新人")
-    private String updatedBy;
+    private String modifiedBy;
 
     @ApiModelProperty(value = "更新时间")
-    private Date updatedTime;
+    private Date modifiedTime;
 
 
 }
