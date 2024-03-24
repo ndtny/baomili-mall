@@ -1,5 +1,6 @@
 package com.baomili.mall.modules.product.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomili.mall.modules.product.model.PmsProductCategoryAttributeRelation;
 import com.baomili.mall.modules.product.mapper.PmsProductCategoryAttributeRelationMapper;
 import com.baomili.mall.modules.product.service.PmsProductCategoryAttributeRelationService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2024-03-23
  */
 @Service
+@DS("pms")
 public class PmsProductCategoryAttributeRelationServiceImpl extends ServiceImpl<PmsProductCategoryAttributeRelationMapper, PmsProductCategoryAttributeRelation> implements PmsProductCategoryAttributeRelationService {
 
 }
