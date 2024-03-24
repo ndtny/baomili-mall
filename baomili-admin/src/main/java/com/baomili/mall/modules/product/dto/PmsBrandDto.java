@@ -1,17 +1,19 @@
-package com.baomili.mall.modules.product.model;
+package com.baomili.mall.modules.product.dto;
 
-import com.baomidou.mybatisplus.annotation.*;
-
-import java.util.Date;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * <p>
- * 商品画册表
+ * 品牌表
  * </p>
  *
  * @author David
@@ -19,43 +21,45 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("pms_album")
-@ApiModel(value="PmsAlbum对象", description="商品画册表")
-public class PmsAlbum implements Serializable {
+@ApiModel(value="PmsBrandDto对象", description="品牌表")
+public class PmsBrandDto implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "主键id")
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "名称")
+    @ApiModelProperty(value = "品牌名称")
     private String name;
 
-    @ApiModelProperty(value = "商品id")
-    private Long productId;
-
-    @ApiModelProperty(value = "商品图片数量")
-    private Integer picCount;
+    @ApiModelProperty(value = "首字母")
+    private String firstLetter;
 
     @ApiModelProperty(value = "排序")
     private Integer sort;
 
-    @ApiModelProperty(value = "描述")
-    private String description;
+    @ApiModelProperty(value = "是否展示：1：是，0：否")
+    private Boolean showStatus;
+
+    @ApiModelProperty(value = "品牌logo")
+    private String logo;
+
+    @ApiModelProperty(value = "专区大图")
+    private String prefecturePic;
+
+    @ApiModelProperty(value = "品牌故事")
+    private String brandStory;
 
     @ApiModelProperty(value = "创建人")
     private String createBy;
 
     @ApiModelProperty(value = "创建时间")
-    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     @ApiModelProperty(value = "更新人")
     private String modifiedBy;
 
     @ApiModelProperty(value = "更新时间")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date modifiedTime;
 
     @ApiModelProperty(value = "是否删除：0：否，1：是")

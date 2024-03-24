@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * MyBatis配置类
  */
-//@Configuration
-//@EnableTransactionManagement
-//@MapperScan({"com.baomili.mall.modules.*.mapper"})
-//public class MyBatisConfig {
-//    @Bean
-//    public PaginationInterceptor paginationInterceptor() {
-//        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-//        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
-//        return paginationInterceptor;
-//    }
-//}
+@Configuration
+@EnableTransactionManagement
+@MapperScan({"com.baomili.mall.modules.*.mapper"})
+public class MyBatisConfig {
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
+        return paginationInterceptor;
+    }
+}
