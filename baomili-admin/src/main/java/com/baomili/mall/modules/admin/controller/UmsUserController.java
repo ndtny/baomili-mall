@@ -55,8 +55,8 @@ public class UmsUserController {
 
     @ApiOperation("用户退出")
     @PostMapping("/logout")
-    public CommonResult logout(@RequestParam String token) {
-        umsUserService.logout(token);
+    public CommonResult logout() {
+        umsUserService.logout();
         return CommonResult.success();
     }
 

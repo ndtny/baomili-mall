@@ -20,5 +20,5 @@ public interface UmsUserService extends IService<UmsUser> {
 
     UmsUserVo login(UmsUserAuthDto userAuthDto);
 
-    void logout(String token);
+    void logout();
 }

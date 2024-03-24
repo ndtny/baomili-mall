@@ -116,7 +116,7 @@ public class UmsUserServiceImpl extends ServiceImpl<UmsUserMapper, UmsUser> impl
     }
 
     @Override
-    public void logout(String token) {
+    public void logout() {
         log.info("logout 退出成功");
     }
 }
