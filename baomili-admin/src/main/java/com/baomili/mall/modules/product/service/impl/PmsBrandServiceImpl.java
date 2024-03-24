@@ -55,7 +55,6 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandMapper, PmsBrand> i
         }
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(brandDto, pmsBrand);
-        log.info("addPmsBrand 新增商品品牌 成功");
         return pmsBrandMapper.insert(pmsBrand);
     }
 
@@ -64,7 +63,6 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandMapper, PmsBrand> i
         log.info("addPmsBrand 修改商品品牌 入参：{}", brandDto);
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(brandDto, pmsBrand);
-        log.info("addPmsBrand 修改商品品牌 成功");
         UpdateWrapper<PmsBrand> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", brandDto.getId());
         return pmsBrandMapper.update(pmsBrand, updateWrapper);

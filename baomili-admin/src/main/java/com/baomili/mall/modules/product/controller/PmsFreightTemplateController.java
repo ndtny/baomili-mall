@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/product/pmsFeightTemplate")
-public class PmsFeightTemplateController {
+public class PmsFreightTemplateController {
 
 }
 

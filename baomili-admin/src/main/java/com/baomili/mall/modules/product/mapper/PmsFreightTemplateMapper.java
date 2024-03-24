@@ -1,6 +1,6 @@
 package com.baomili.mall.modules.product.mapper;
 
-import com.baomili.mall.modules.product.model.PmsFeightTemplate;
+import com.baomili.mall.modules.product.model.PmsFreightTemplate;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author David
  * @since 2024-03-23
  */
-public interface PmsFeightTemplateMapper extends BaseMapper<PmsFeightTemplate> {
+public interface PmsFreightTemplateMapper extends BaseMapper<PmsFreightTemplate> {
 
 }

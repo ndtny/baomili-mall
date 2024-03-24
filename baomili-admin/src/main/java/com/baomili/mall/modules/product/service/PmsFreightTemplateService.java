@@ -1,6 +1,6 @@
 package com.baomili.mall.modules.product.service;
 
-import com.baomili.mall.modules.product.model.PmsFeightTemplate;
+import com.baomili.mall.modules.product.model.PmsFreightTemplate;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author David
  * @since 2024-03-23
  */
-public interface PmsFeightTemplateService extends IService<PmsFeightTemplate> {
+public interface PmsFreightTemplateService extends IService<PmsFreightTemplate> {
 
 }

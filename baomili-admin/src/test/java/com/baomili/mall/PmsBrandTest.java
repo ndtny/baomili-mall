@@ -38,9 +38,11 @@ public class PmsBrandTest {
 
     @Test
     public void updatePmsBrand() {
+        String username = "admin";
         PmsBrandDto pmsBrandDto = new PmsBrandDto();
         pmsBrandDto.setId(6L);
         pmsBrandDto.setSort(4);
+        pmsBrandDto.setModifiedBy(username);
         pmsBrandService.updatePmsBrand(pmsBrandDto);
     }
 

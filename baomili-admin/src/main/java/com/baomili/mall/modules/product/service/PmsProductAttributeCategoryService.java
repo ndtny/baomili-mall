@@ -1,7 +1,11 @@
 package com.baomili.mall.modules.product.service;
 
+import com.baomili.mall.modules.common.dto.PageVo;
+import com.baomili.mall.modules.product.dto.AttributeCategoryQueryParam;
+import com.baomili.mall.modules.product.dto.PmsProductAttributeCategoryDto;
 import com.baomili.mall.modules.product.model.PmsProductAttributeCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomili.mall.modules.product.vo.PmsProductAttributeCategoryVo;
 
 /**
  * <p>
@@ -13,4 +17,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PmsProductAttributeCategoryService extends IService<PmsProductAttributeCategory> {
 
+    int addAttributeCategory(PmsProductAttributeCategoryDto attributeCategoryDto);
+
+    int updateAttributeCategory(PmsProductAttributeCategoryDto attributeCategoryDto);
+
+    PageVo<PmsProductAttributeCategory> getPageList(AttributeCategoryQueryParam attributeCategoryQueryParam);
+
+    PmsProductAttributeCategoryVo getAttributeCategoryById(Long id);
 }
