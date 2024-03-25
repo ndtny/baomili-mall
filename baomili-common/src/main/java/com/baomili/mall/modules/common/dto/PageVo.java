@@ -11,17 +11,32 @@ import java.util.List;
 public class PageVo<T> implements Serializable {
     private static final long serialVersionUID = 2259153884062361053L;
 
+    /**
+     * 当前页
+     */
     private Long current;
-    private Long size;
+    /**
+     * 每页显示条数
+     */
+    private Long pageSize;
+    /**
+     * 总数
+     */
     private Integer total;
+    /**
+     * 页数
+     */
+    private Long pageTotal;
+    /**
+     * 数据集合
+     */
     private List<T> list;
 
-    public PageVo(Long current, Long size, Integer total, List<T> list) {
+    public PageVo(Long current, Long pageSize, Integer total, List<T> list) {
         this.current = current;
-        this.size = size;
+        this.pageSize = pageSize;
+        this.pageTotal = (long) Math.ceil((double) total / pageSize);
         this.total = total;
         this.list = list;
-        Page<T> page = new Page<>(current, size, total);
-        page.setRecords(list);
     }
 }
