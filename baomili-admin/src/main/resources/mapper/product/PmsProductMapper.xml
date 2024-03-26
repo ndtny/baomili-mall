@@ -27,13 +27,10 @@
         <result column="promotion_buy_limit" property="promotionBuyLimit" />
         <result column="description" property="description" />
         <result column="stock" property="stock" />
-        <result column="stock_warning" property="stockWarning" />
         <result column="product_services" property="productServices" />
         <result column="remark" property="remark" />
         <result column="detail_title" property="detailTitle" />
         <result column="detail_description" property="detailDescription" />
-        <result column="promotion_start_time" property="promotionStartTime" />
-        <result column="promotion_end_time" property="promotionEndTime" />
         <result column="promotion_type" property="promotionType" />
         <result column="audit_status" property="auditStatus" />
         <result column="publish_status" property="publishStatus" />

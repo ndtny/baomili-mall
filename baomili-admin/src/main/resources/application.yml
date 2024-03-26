@@ -12,23 +12,23 @@ spring:
         ums:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://101.132.155.185:3306/bml_ums?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: 123456
+          username: David
+          password: david210613...
         pms:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://101.132.155.185:3306/bml_pms?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: 123456
+          username: David
+          password: david210613...
         sms:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://101.132.155.185:3306/bml_sms?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: 123456
+          username: David
+          password: david210613...
         oms:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://101.132.155.185:3306/bml_oms?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: 123456
+          username: David
+          password: david210613...
 
   redis:
     host: 101.132.155.185 # Redis服务器地址

@@ -1,15 +1,15 @@
-package com.baomili.mall.modules.product.model;
-
-import java.math.BigDecimal;
+package com.baomili.mall.modules.product.dto;
 
 import com.baomidou.mybatisplus.annotation.*;
-
-import java.util.Date;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.catalina.util.Introspection;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,18 +17,17 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author David
- * @since 2024-03-26
+ * @since 2024-03-23
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("pms_product")
-@ApiModel(value="PmsProduct对象", description="商品信息")
-public class PmsProduct implements Serializable {
+@ApiModel(value="PmsProductDto对象", description="商品信息")
+public class PmsProductDto implements Serializable {
 
-    private static final long serialVersionUID=1L;
+
+    private static final long serialVersionUID = -2021582525598214171L;
 
     @ApiModelProperty(value = "主键id")
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "商品编码")
@@ -76,8 +75,38 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty(value = "商品价格")
     private BigDecimal price;
 
+    @ApiModelProperty(value = "会员价格")
+    private BigDecimal memberPrice;
+
+    @ApiModelProperty(value = "会员级别id")
+    private Long memberLevelId;
+
+    @ApiModelProperty(value = "会员级别名称")
+    private String memberLevelName;
+
     @ApiModelProperty(value = "促销价格")
     private BigDecimal promotionPrice;
+
+    @ApiModelProperty(value = "满减商品金额")
+    private BigDecimal fullPrice;
+
+    @ApiModelProperty(value = "满减金额")
+    private BigDecimal reducePrice;
+
+    @ApiModelProperty(value = "满足的商品数量")
+    private Integer count;
+
+    @ApiModelProperty(value = "折扣")
+    private BigDecimal discount;
+
+    @ApiModelProperty(value = "折扣后价格")
+    private BigDecimal discountPrice;
+
+    @ApiModelProperty(value = "促销开始时间")
+    private Date promotionStartTime;
+
+    @ApiModelProperty(value = "促销结束时间")
+    private Date promotionEndTime;
 
     @ApiModelProperty(value = "赠送的成长值")
     private Integer giftGrowth;
@@ -96,6 +125,9 @@ public class PmsProduct implements Serializable {
 
     @ApiModelProperty(value = "库存")
     private Integer stock;
+
+    @ApiModelProperty(value = "库存预警")
+    private Integer stockWarning;
 
     @ApiModelProperty(value = "以逗号分割的产品服务：1->无忧退货；2->快速退款；3->免费包邮")
     private String productServices;
@@ -131,14 +163,12 @@ public class PmsProduct implements Serializable {
     private String createBy;
 
     @ApiModelProperty(value = "创建时间")
-    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     @ApiModelProperty(value = "更新人")
     private String modifiedBy;
 
     @ApiModelProperty(value = "更新时间")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date modifiedTime;
 
     @ApiModelProperty(value = "删除状态：0->未删除；1->已删除")
