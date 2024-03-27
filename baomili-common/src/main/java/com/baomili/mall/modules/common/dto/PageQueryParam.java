@@ -12,10 +12,10 @@ public class PageQueryParam implements Serializable {
     /**
      * 当前页
      */
-    private Long current = 1L;
+    private Long current;
 
     /**
      * 每页显示条数
      */
-    private Long pageSize = 50L;
+    private Long pageSize;
 }
