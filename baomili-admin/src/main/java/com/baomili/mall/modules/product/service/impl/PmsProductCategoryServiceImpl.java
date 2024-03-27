@@ -3,9 +3,11 @@ package com.baomili.mall.modules.product.service.impl;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
 import com.baomili.mall.modules.product.dto.PmsProductCategoryDto;
 import com.baomili.mall.modules.product.dto.ProductCategoryQueryParam;
+import com.baomili.mall.modules.product.model.PmsBrand;
 import com.baomili.mall.modules.product.model.PmsProductCategory;
 import com.baomili.mall.modules.product.mapper.PmsProductCategoryMapper;
 import com.baomili.mall.modules.product.model.PmsProductCategoryAttributeRelation;
@@ -139,8 +141,10 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         if (StringUtils.isNotBlank(queryParam.getName())) {
             queryWrapper.likeRight("name", queryParam.getName());
         }
-        List<PmsProductCategory> list = pmsProductCategoryMapper.selectList(queryWrapper);
-        log.info("getPmsProductCategoryPage 分页查询商品分类信息 total：{}", list.size());
-        return new PageVo<>(queryParam.getCurrent(), queryParam.getPageSize(), list.size(), list);
+        Page<PmsProductCategory> page = new Page<>();
+        page.setCurrent(queryParam.getCurrent());
+        page.setSize(queryParam.getPageSize());
+        Page<PmsProductCategory> productCategoryPage = pmsProductCategoryMapper.selectPage(page, queryWrapper);
+        return new PageVo<>(productCategoryPage.getCurrent(), productCategoryPage.getSize(), productCategoryPage.getTotal(), productCategoryPage.getRecords());
     }
 }

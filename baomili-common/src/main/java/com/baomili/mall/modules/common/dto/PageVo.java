@@ -22,7 +22,7 @@ public class PageVo<T> implements Serializable {
     /**
      * 总数
      */
-    private Integer total;
+    private Long total;
     /**
      * 页数
      */
@@ -32,7 +32,7 @@ public class PageVo<T> implements Serializable {
      */
     private List<T> list;
 
-    public PageVo(Long current, Long pageSize, Integer total, List<T> list) {
+    public PageVo(Long current, Long pageSize, Long total, List<T> list) {
         this.current = current;
         this.pageSize = pageSize;
         this.pageTotal = (long) Math.ceil((double) total / pageSize);

@@ -60,6 +60,7 @@
         <commons-pool2.version>2.4.3</commons-pool2.version>
         <rocketmq-spring-boot-starter.version>2.2.1</rocketmq-spring-boot-starter.version>
         <mongodb-spring-boot-starter.version>2.3.2.RELEASE</mongodb-spring-boot-starter.version>
+        <tlog.version>1.5.0</tlog.version>
     </properties>
 
     <dependencyManagement>
@@ -233,6 +234,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>2.3.12.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>tlog-all-spring-boot-starter</artifactId>
+                <version>${tlog.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

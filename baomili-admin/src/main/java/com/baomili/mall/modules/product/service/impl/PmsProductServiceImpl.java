@@ -2,6 +2,8 @@ package com.baomili.mall.modules.product.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
 import com.baomili.mall.modules.product.dto.PmsProductDto;
 import com.baomili.mall.modules.product.dto.ProductQueryParam;
@@ -143,8 +145,11 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         if (StringUtils.isNotBlank(param.getProductName())) {
             queryWrapper.likeRight("product_name", param.getProductName());
         }
-        List<PmsProduct> list = pmsProductMapper.selectList(queryWrapper);
-        return new PageVo<>(param.getCurrent(), param.getPageSize(), list.size(), list);
+        Page<PmsProduct> page = new Page<>();
+        page.setCurrent(param.getCurrent());
+        page.setSize(param.getPageSize());
+        Page<PmsProduct> productPage = pmsProductMapper.selectPage(page, queryWrapper);
+        return new PageVo<>(productPage.getCurrent(), productPage.getSize(), productPage.getTotal(), productPage.getRecords());
     }
 
     @Override

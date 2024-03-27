@@ -1,9 +1,11 @@
 package com.baomili.mall.modules.product.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
 import com.baomili.mall.modules.product.dto.AttributeCategoryQueryParam;
 import com.baomili.mall.modules.product.dto.PmsProductAttributeCategoryDto;
+import com.baomili.mall.modules.product.model.PmsProduct;
 import com.baomili.mall.modules.product.model.PmsProductAttributeCategory;
 import com.baomili.mall.modules.product.mapper.PmsProductAttributeCategoryMapper;
 import com.baomili.mall.modules.product.service.PmsProductAttributeCategoryService;
@@ -68,9 +70,11 @@ public class PmsProductAttributeCategoryServiceImpl extends ServiceImpl<PmsProdu
         if (StringUtils.isNotBlank(attributeCategoryQueryParam.getName())) {
             queryWrapper.likeRight("name", attributeCategoryQueryParam.getName());
         }
-        List<PmsProductAttributeCategory> list = pmsProductAttributeCategoryMapper.selectList(queryWrapper);
-        log.info("getPageList 分页查询属性分类 total：{}", list.size());
-        return new PageVo<>(attributeCategoryQueryParam.getCurrent(), attributeCategoryQueryParam.getPageSize(), list.size(), list);
+        Page<PmsProductAttributeCategory> page = new Page<>();
+        page.setCurrent(attributeCategoryQueryParam.getCurrent());
+        page.setSize(attributeCategoryQueryParam.getPageSize());
+        Page<PmsProductAttributeCategory> categoryPage = pmsProductAttributeCategoryMapper.selectPage(page, queryWrapper);
+        return new PageVo<>(categoryPage.getCurrent(), categoryPage.getSize(), categoryPage.getTotal(), categoryPage.getRecords());
     }
 
     @Override

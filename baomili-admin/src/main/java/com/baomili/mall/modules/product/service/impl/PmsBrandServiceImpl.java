@@ -11,6 +11,7 @@ import com.baomili.mall.modules.product.dto.PmsBrandDto;
 import com.baomili.mall.modules.product.dto.ProductQueryParam;
 import com.baomili.mall.modules.product.model.PmsBrand;
 import com.baomili.mall.modules.product.mapper.PmsBrandMapper;
+import com.baomili.mall.modules.product.model.PmsProductAttribute;
 import com.baomili.mall.modules.product.service.PmsBrandService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.product.vo.PmsBrandVo;
@@ -76,9 +77,11 @@ public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandMapper, PmsBrand> i
         if (StringUtils.isNotBlank(queryParam.getName())) {
             queryWrapper.likeRight("name", queryParam.getName());
         }
-        List<PmsBrand> brandList = pmsBrandMapper.selectList(queryWrapper);
-        log.info("getPmsBrandPage 分页查询商品品牌列表 total：{}", brandList.size());
-        return new PageVo<>(queryParam.getCurrent(), queryParam.getPageSize(), brandList.size(), brandList);
+        Page<PmsBrand> page = new Page<>();
+        page.setCurrent(queryParam.getCurrent());
+        page.setSize(queryParam.getPageSize());
+        Page<PmsBrand> pmsBrandPage = pmsBrandMapper.selectPage(page, queryWrapper);
+        return new PageVo<>(pmsBrandPage.getCurrent(), pmsBrandPage.getSize(), pmsBrandPage.getTotal(), pmsBrandPage.getRecords());
     }
 
     @Override

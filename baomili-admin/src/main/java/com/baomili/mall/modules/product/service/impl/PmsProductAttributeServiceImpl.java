@@ -1,6 +1,7 @@
 package com.baomili.mall.modules.product.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
 import com.baomili.mall.modules.product.dto.AttributeQueryParam;
 import com.baomili.mall.modules.product.dto.PmsProductAttributeDto;
@@ -89,8 +90,10 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
         if (StringUtils.isNotBlank(queryParam.getAttributeName())) {
             queryWrapper.eq("attribute_name", queryParam.getAttributeName());
         }
-        List<PmsProductAttribute> list = pmsProductAttributeMapper.selectList(queryWrapper);
-        log.info("getPmsAttributePage 分页查询商品属性 total：{}", list.size());
-        return new PageVo<>(queryParam.getCurrent(), queryParam.getPageSize(), list.size(), list);
+        Page<PmsProductAttribute> page = new Page<>();
+        page.setCurrent(queryParam.getCurrent());
+        page.setSize(queryParam.getPageSize());
+        Page<PmsProductAttribute> attributePage = pmsProductAttributeMapper.selectPage(page, queryWrapper);
+        return new PageVo<>(attributePage.getCurrent(), attributePage.getSize(), attributePage.getTotal(), attributePage.getRecords());
     }
 }
