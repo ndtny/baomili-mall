@@ -3,6 +3,7 @@ package com.baomili.mall;
 import com.baomili.mall.modules.admin.dto.UmsUserDto;
 import com.baomili.mall.modules.admin.service.UmsUserService;
 import com.baomili.mall.modules.admin.vo.UmsUserVo;
+import com.baomili.mall.modules.redis.utils.RedisSingleUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,9 @@ public class AdminTest {
     @Resource
     private UmsUserService umsUserService;
 
+    @Resource
+    private RedisSingleUtil redisSingleUtil;
+
     @Test
     public void test() {
         UmsUserDto umsUserDto = new UmsUserDto();
@@ -31,5 +35,10 @@ public class AdminTest {
         umsUserDto.setCredential("123456");
         UmsUserVo userVo = umsUserService.register(umsUserDto);
         log.info("userVo：{}", userVo);
+    }
+
+    @Test
+    public void redisTest() {
+        redisSingleUtil.set("user", "David");
     }
 }

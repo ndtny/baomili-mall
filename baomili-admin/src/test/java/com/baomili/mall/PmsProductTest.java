@@ -41,9 +41,9 @@ public class PmsProductTest {
         String promotionEndTime = "2024-04-15 12:00:00";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PmsProductDto pmsProductDto = new PmsProductDto();
-        pmsProductDto.setProductNumber("HUAWEI_MATE60");
-        pmsProductDto.setProductName("华为Mate 60");
-        pmsProductDto.setProductSubTitle("华为Mate 60全新上市");
+        pmsProductDto.setProductNumber("HUAWEI_MATE40");
+        pmsProductDto.setProductName("华为Mate 40");
+        pmsProductDto.setProductSubTitle("华为Mate 40全新上市");
         pmsProductDto.setBrandId(1L);
         pmsProductDto.setBrandName("华为");
         pmsProductDto.setProductCategoryId(1L);
@@ -68,7 +68,7 @@ public class PmsProductTest {
         pmsProductDto.setStock(9999);
         pmsProductDto.setStockWarning(100);
         pmsProductDto.setProductServices(ProductConstant.ServiceTypeEnum.FREE_RETURNS+","+ProductConstant.ServiceTypeEnum.QUICK_REFUND+","+ProductConstant.ServiceTypeEnum.FREE_SHIPPING);
-        pmsProductDto.setDetailTitle("华为Mate 60全新上市");
+        pmsProductDto.setDetailTitle("华为Mate 40全新上市");
         pmsProductDto.setPromotionType(ProductConstant.PromotionTypeEnum.MEMBER_PRICE.getValue());
         pmsProductDto.setAuditStatus(0);
         pmsProductDto.setPublishStatus(0);
@@ -88,8 +88,8 @@ public class PmsProductTest {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PmsProductDto pmsProductDto = new PmsProductDto();
         pmsProductDto.setProductNumber("HUAWEI_MATE60");
-        pmsProductDto.setProductName("华为Mate 60");
-        pmsProductDto.setProductSubTitle("华为Mate 60全新上市");
+        pmsProductDto.setProductName("华为Mate 50");
+        pmsProductDto.setProductSubTitle("华为Mate 50全新上市");
         pmsProductDto.setBrandId(1L);
         pmsProductDto.setBrandName("华为");
         pmsProductDto.setProductCategoryId(1L);
@@ -114,7 +114,7 @@ public class PmsProductTest {
         pmsProductDto.setStock(9999);
         pmsProductDto.setStockWarning(100);
         pmsProductDto.setProductServices(ProductConstant.ServiceTypeEnum.FREE_RETURNS+","+ProductConstant.ServiceTypeEnum.QUICK_REFUND+","+ProductConstant.ServiceTypeEnum.FREE_SHIPPING);
-        pmsProductDto.setDetailTitle("华为Mate 60全新上市");
+        pmsProductDto.setDetailTitle("华为Mate 50全新上市");
         pmsProductDto.setPromotionType(ProductConstant.PromotionTypeEnum.MEMBER_PRICE.getValue());
         pmsProductDto.setAuditStatus(0);
         pmsProductDto.setPublishStatus(0);
@@ -135,7 +135,7 @@ public class PmsProductTest {
 
     @Test
     public void getProductById() {
-        PmsProductVo pmsProductVo = pmsProductService.getProductById(1L);
+        PmsProductVo pmsProductVo = pmsProductService.getProductById(4L);
         log.info("商品信息：{}", pmsProductVo);
     }
 }

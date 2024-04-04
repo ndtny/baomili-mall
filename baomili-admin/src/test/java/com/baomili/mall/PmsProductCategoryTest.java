@@ -28,7 +28,7 @@ public class PmsProductCategoryTest {
     public void addProductCategory() {
         String username = "admin";
         List<Long> list = new ArrayList<>();
-        list.add(2L);
+        list.add(1L);
         PmsProductCategoryDto productCategoryDto = new PmsProductCategoryDto();
         productCategoryDto.setName("手机数码");
         productCategoryDto.setParentId(0L);

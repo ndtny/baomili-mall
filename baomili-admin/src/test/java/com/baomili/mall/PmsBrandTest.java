@@ -28,9 +28,9 @@ public class PmsBrandTest {
     public void addPmsBrand() {
         String username = "admin";
         PmsBrandDto pmsBrandDto = new PmsBrandDto();
-        pmsBrandDto.setName("小米");
-        pmsBrandDto.setFirstLetter("X");
-        pmsBrandDto.setSort(3);
+        pmsBrandDto.setName("华为");
+        pmsBrandDto.setFirstLetter("H");
+        pmsBrandDto.setSort(1);
         pmsBrandDto.setCreateBy(username);
         pmsBrandDto.setModifiedBy(username);
         pmsBrandService.addPmsBrand(pmsBrandDto);
@@ -40,8 +40,8 @@ public class PmsBrandTest {
     public void updatePmsBrand() {
         String username = "admin";
         PmsBrandDto pmsBrandDto = new PmsBrandDto();
-        pmsBrandDto.setId(6L);
-        pmsBrandDto.setSort(4);
+        pmsBrandDto.setId(1L);
+        pmsBrandDto.setSort(1);
         pmsBrandDto.setModifiedBy(username);
         pmsBrandService.updatePmsBrand(pmsBrandDto);
     }

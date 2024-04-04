@@ -1,10 +1,12 @@
 package com.baomili.mall.modules.product.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
+import com.baomili.mall.modules.product.constant.RedisKey;
 import com.baomili.mall.modules.product.dto.PmsProductDto;
 import com.baomili.mall.modules.product.dto.ProductQueryParam;
 import com.baomili.mall.modules.product.model.*;
@@ -12,6 +14,7 @@ import com.baomili.mall.modules.product.mapper.PmsProductMapper;
 import com.baomili.mall.modules.product.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.product.vo.PmsProductVo;
+import com.baomili.mall.modules.redis.utils.RedisSingleUtil;
 import io.netty.handler.ssl.OpenSslSessionTicketKey;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -54,6 +57,9 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
 
     @Resource
     private PmsMemberPriceService pmsMemberPriceService;
+
+    @Resource
+    private RedisSingleUtil redisSingleUtil;
 
     @Override
     @Transactional
@@ -126,6 +132,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         pmsMemberPrice.setModifiedBy(pmsProduct.getModifiedBy());
         pmsMemberPriceService.save(pmsMemberPrice);
         log.info("addProduct 新增商品 保存会员价格成功");
+        redisSingleUtil.set(RedisKey.PMS_PRODUCT_KEY + pmsProduct.getId(), pmsProductDto);
         return count;
     }
 
@@ -155,6 +162,13 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
     @Override
     public PmsProductVo getProductById(Long id) {
         log.info("getProductById 查询商品 入参：{}", id);
+        PmsProductDto productDto = redisSingleUtil.get(RedisKey.PMS_PRODUCT_KEY + id, PmsProductDto.class);
+        if (productDto != null) {
+            log.info("getProductById 查询商品 缓存获取");
+            PmsProductVo pmsProductVo = new PmsProductVo();
+            BeanUtils.copyProperties(productDto, pmsProductVo);
+            return pmsProductVo;
+        }
         QueryWrapper<PmsProduct> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", id);
         PmsProduct pmsProduct = pmsProductMapper.selectOne(queryWrapper);
