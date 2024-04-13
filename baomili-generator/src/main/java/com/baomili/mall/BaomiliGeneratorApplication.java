@@ -128,7 +128,7 @@ public class BaomiliGeneratorApplication {
     }
 
     /**
-     * 初始化自定义配置
+     * 初始化自定义配置oms_cart_item,oms_order,oms_order_config,oms_order_item,oms_order_operate_history,oms_order_return_apply,oms_order_return_reason
      */
     private static InjectionConfig initInjectionConfig(String projectPath, String moduleName) {
         // 自定义配置

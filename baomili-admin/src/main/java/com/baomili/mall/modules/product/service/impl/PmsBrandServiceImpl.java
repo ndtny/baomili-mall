@@ -2,29 +2,21 @@ package com.baomili.mall.modules.product.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomili.mall.modules.common.dto.PageVo;
-import com.baomili.mall.modules.order.model.OmsCartItem;
 import com.baomili.mall.modules.product.dto.BrandQueryParam;
 import com.baomili.mall.modules.product.dto.PmsBrandDto;
-import com.baomili.mall.modules.product.dto.ProductQueryParam;
 import com.baomili.mall.modules.product.model.PmsBrand;
 import com.baomili.mall.modules.product.mapper.PmsBrandMapper;
-import com.baomili.mall.modules.product.model.PmsProductAttribute;
 import com.baomili.mall.modules.product.service.PmsBrandService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.product.vo.PmsBrandVo;
-import javafx.scene.control.Alert;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 /**

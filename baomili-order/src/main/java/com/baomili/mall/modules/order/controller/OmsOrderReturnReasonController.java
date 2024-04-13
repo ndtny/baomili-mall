@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 订单购物车表 前端控制器
+ * 退货原因表 前端控制器
  * </p>
  *
  * @author David
- * @since 2024-03-23
+ * @since 2024-04-05
  */
 @RestController
-@RequestMapping("/order/omsCartItem")
-public class OmsCartItemController {
+@RequestMapping("/order/omsOrderReturnReason")
+public class OmsOrderReturnReasonController {
 
 }
 

@@ -1,7 +1,7 @@
-package com.baomili.mall.modules.order.mapper;
+package com.baomili.mall.modules.cart.mapper;
 
-import com.baomili.mall.modules.order.model.OmsCartItem;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomili.mall.modules.cart.model.OmsCartItem;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author David
- * @since 2024-03-23
+ * @since 2024-04-05
  */
 public interface OmsCartItemMapper extends BaseMapper<OmsCartItem> {
 

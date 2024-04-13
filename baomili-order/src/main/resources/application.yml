@@ -5,26 +5,17 @@ spring:
   application:
     name: baomili-order
   datasource:
-    dynamic:
-      #设置默认的数据源或者数据源组,默认值即为master
-      primary: master
-      #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
-      strict: false
-      datasource:
-        master:
-          url: jdbc:mysql://124.70.206.3:3306/baomili_mall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: mysql970615...
-        slave:
-          url: jdbc:mysql://124.70.206.3:3306/baomili_mall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-          username: root
-          password: mysql970615...
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.132.155.185:3306/bml_oms?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: David
+    password: david210613...
   redis:
-    host: 124.70.206.3 # Redis服务器地址
+    host: 101.132.155.185 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
-    password: redis19970615021... # Redis服务器连接密码（默认为空）
+    #    password:  # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
+
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -39,3 +30,14 @@ logging:
   level:
     root: info
     com.baomili: debug
+
+rocketmq:
+  name-server: 47.101.135.230:9876
+  consumer:
+    group: consumerGroup
+  producer:
+    group: producerGroup
+    retry-next-server: true
+    retry-times-when-send-async-failed: 2
+    retry-times-when-send-failed: 2
+    send-message-timeout: 3000
