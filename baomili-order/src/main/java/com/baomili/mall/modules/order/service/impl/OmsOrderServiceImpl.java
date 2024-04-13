@@ -1,5 +1,6 @@
 package com.baomili.mall.modules.order.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomili.mall.modules.order.dto.OmsOrderDto;
 import com.baomili.mall.modules.order.dto.OmsOrderItemDto;
 import com.baomili.mall.modules.order.dto.OrderQueryParamDto;
@@ -12,8 +13,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.order.vo.OmsOrderVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.BeanUtils;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -80,7 +84,9 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         omsOrderItemService.saveBatch(omsOrderItems);
         log.info("addOrder 下单成功");
         // 使用MQ异步扣减库存
-        rocketMQTemplate.convertAndSend("order", omsOrderItems);
+        omsOrderItems.forEach(order -> {
+            rocketMQTemplate.convertAndSend("order:deduceStock", MessageBuilder.withPayload(order.getProductId()+":"+order.getQuantity()).build());
+        });
     }
 
     private String generateOrderNumber() {
@@ -90,6 +96,26 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
 
     @Override
     public List<OmsOrderVo> getOrderList(OrderQueryParamDto queryParamDto) {
-        return null;
+        log.info("getOrderList 用户查询订单 入参：{}", queryParamDto);
+        QueryWrapper<OmsOrder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("memberId", queryParamDto.getMemberId());
+        if (queryParamDto.getOrderStatus() != null) {
+            queryWrapper.eq("order_status", queryParamDto.getOrderStatus());
+        }
+        if (StringUtils.isNotBlank(queryParamDto.getProductName())) {
+            queryWrapper.likeRight("product_name", queryParamDto.getProductName());
+        }
+        if (StringUtils.isNotBlank(queryParamDto.getProductBrand())) {
+            queryWrapper.likeRight("product_brand", queryParamDto.getProductBrand());
+        }
+        List<OmsOrder> omsOrders = omsOrderMapper.selectList(queryWrapper);
+        List<OmsOrderVo> omsOrderVos = new ArrayList<>();
+        for (OmsOrder omsOrder : omsOrders) {
+            OmsOrderVo omsOrderVo = new OmsOrderVo();
+            BeanUtils.copyProperties(omsOrder, omsOrderVo);
+            omsOrderVos.add(omsOrderVo);
+        }
+        log.info("getOrderList 用户查询订单结束");
+        return omsOrderVos;
     }
 }

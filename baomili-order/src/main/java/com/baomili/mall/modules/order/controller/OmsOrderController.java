@@ -29,7 +29,7 @@ public class OmsOrderController {
     @Resource
     private OmsOrderService omsOrderService;
 
-    @ApiOperation("保存订单")
+    @ApiOperation("商城下单")
     @PostMapping("/addOrder")
     public CommonResult addOrder(@RequestBody OmsOrderDto omsOrderDto) {
         omsOrderService.addOrder(omsOrderDto);
