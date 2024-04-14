@@ -44,9 +44,6 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
     private PmsProductMapper pmsProductMapper;
 
     @Resource
-    private PmsStockService pmsStockService;
-
-    @Resource
     private PmsProductFullReductionService pmsProductFullReductionService;
 
     @Resource
@@ -84,15 +81,15 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         int count = pmsProductMapper.insert(pmsProduct);
         log.info("addProduct 新增商品 成功");
 
-        PmsStock pmsStock = new PmsStock();
-        pmsStock.setProductId(pmsProduct.getId());
-        pmsStock.setProductNumber(pmsProduct.getProductNumber());
-        pmsStock.setStock(pmsProduct.getStock());
-        pmsStock.setStockWarning(pmsProductDto.getStockWarning());
-        pmsStock.setCreateBy(pmsProduct.getCreateBy());
-        pmsStock.setModifiedBy(pmsProduct.getModifiedBy());
-        pmsStockService.save(pmsStock);
-        log.info("addProduct 新增商品 保存库存成功");
+//        PmsStock pmsStock = new PmsStock();
+//        pmsStock.setProductId(pmsProduct.getId());
+//        pmsStock.setProductNumber(pmsProduct.getProductNumber());
+//        pmsStock.setStock(pmsProduct.getStock());
+//        pmsStock.setStockWarning(pmsProductDto.getStockWarning());
+//        pmsStock.setCreateBy(pmsProduct.getCreateBy());
+//        pmsStock.setModifiedBy(pmsProduct.getModifiedBy());
+//        pmsStockService.save(pmsStock);
+//        log.info("addProduct 新增商品 保存库存成功");
 
         PmsProductFullReduction pmsProductFullReduction = new PmsProductFullReduction();
         pmsProductFullReduction.setProductId(pmsProduct.getId());
@@ -176,12 +173,12 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         BeanUtils.copyProperties(pmsProduct, pmsProductVo);
         log.info("getProductById 查询商品 商品信息");
 
-        QueryWrapper<PmsStock> stockQueryWrapper = new QueryWrapper<>();
-        stockQueryWrapper.eq("product_id", id);
-        PmsStock pmsStock = pmsStockService.getOne(stockQueryWrapper);
-        pmsProductVo.setStock(pmsStock.getStock());
-        pmsProductVo.setStockWarning(pmsProductVo.getStockWarning());
-        log.info("getProductById 查询商品 商品库存信息");
+//        QueryWrapper<PmsStock> stockQueryWrapper = new QueryWrapper<>();
+//        stockQueryWrapper.eq("product_id", id);
+//        PmsStock pmsStock = pmsStockService.getOne(stockQueryWrapper);
+//        pmsProductVo.setStock(pmsStock.getStock());
+//        pmsProductVo.setStockWarning(pmsProductVo.getStockWarning());
+//        log.info("getProductById 查询商品 商品库存信息");
 
         QueryWrapper<PmsProductFullReduction> fullReductionQueryWrapper = new QueryWrapper<>();
         fullReductionQueryWrapper.eq("product_id", id);
