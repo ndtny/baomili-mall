@@ -13,15 +13,14 @@ import javax.annotation.Resource;
 @Component
 @Slf4j
 @RocketMQMessageListener(consumerGroup = "consumerGroup", topic = "reduce-stock")
-public class ReduceStockMessageConsumer implements RocketMQListener<String> {
+public class ReduceStockMessageConsumer implements RocketMQListener<ReduceStockEvent> {
 
     @Resource
     private PmsStockService pmsStockService;
 
     @Override
-    public void onMessage(String message) {
-        log.info("收到扣减库存消息 入参：{}", message);
-        ReduceStockEvent reduceStockEvent = JSON.parseObject(message, ReduceStockEvent.class);
+    public void onMessage(ReduceStockEvent reduceStockEvent) {
+        log.info("收到扣减库存消息 入参：{}", reduceStockEvent);
         pmsStockService.reduceStock(reduceStockEvent);
     }
 }

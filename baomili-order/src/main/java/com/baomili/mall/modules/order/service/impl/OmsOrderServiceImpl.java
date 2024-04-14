@@ -98,7 +98,10 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         omsOrderItemService.saveBatch(omsOrderItems);
         log.info("addOrder 下单成功");
         // 使用MQ异步扣减库存
-        reduceStockMessageSender.sendReduceStockMessage(omsOrderDto.getId(), omsOrderItems);
+        boolean result = reduceStockMessageSender.sendReduceStockMessage(omsOrderItems);
+        if (!result) {
+            throw new RuntimeException("库存不足");
+        }
     }
 
     private String generateOrderNumber() {

@@ -34,9 +34,13 @@ public class OmsOrderController {
 
     @ApiOperation("商城下单")
     @PostMapping("/addOrder")
-    public CommonResult addOrder(@RequestBody OmsOrderDto omsOrderDto) {
-        omsOrderService.addOrder(omsOrderDto);
-        return CommonResult.success();
+    public CommonResult<String> addOrder(@RequestBody OmsOrderDto omsOrderDto) {
+        try {
+            omsOrderService.addOrder(omsOrderDto);
+        } catch (Exception e) {
+            return CommonResult.failed(e.getMessage());
+        }
+        return CommonResult.success("下单成功");
     }
 
     @ApiOperation("查询订单列表")
