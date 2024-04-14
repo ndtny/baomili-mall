@@ -21,4 +21,6 @@ public interface OmsOrderService extends IService<OmsOrder> {
     void addOrder(OmsOrderDto omsOrderDto);
 
     List<OmsOrderVo> getOrderList(OrderQueryParamDto queryParamDto);
+
+    void orderTimeOutCancel();
 }

@@ -2,6 +2,7 @@ package com.baomili.mall.modules.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomili.mall.modules.common.utils.DoubleUtil;
+import com.baomili.mall.modules.order.constant.OrderConstant;
 import com.baomili.mall.modules.order.constant.RedisKey;
 import com.baomili.mall.modules.order.dto.OmsOrderDto;
 import com.baomili.mall.modules.order.dto.OmsOrderItemDto;
@@ -9,6 +10,7 @@ import com.baomili.mall.modules.order.dto.OrderQueryParamDto;
 import com.baomili.mall.modules.order.model.OmsOrder;
 import com.baomili.mall.modules.order.mapper.OmsOrderMapper;
 import com.baomili.mall.modules.order.model.OmsOrderItem;
+import com.baomili.mall.modules.order.rocketmq.OrderCancelMessageSender;
 import com.baomili.mall.modules.order.rocketmq.ReduceStockMessageSender;
 import com.baomili.mall.modules.order.service.OmsOrderItemService;
 import com.baomili.mall.modules.order.service.OmsOrderService;
@@ -57,6 +59,9 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
     private ReduceStockMessageSender reduceStockMessageSender;
 
     @Resource
+    private OrderCancelMessageSender orderCancelMessageSender;
+
+    @Resource
     private RedisTemplate redisTemplate;
 
     @Override
@@ -80,6 +85,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         }
 
         List<OmsOrderItem> omsOrderItems = new ArrayList<>();
+        List<Long> orderIds = new ArrayList<>();
         for (OmsOrderItemDto orderItemDto : omsOrderDto.getOmsOrderItemDtoList()) {
             OmsOrder omsOrder = new OmsOrder();
             BeanUtils.copyProperties(omsOrderDto, omsOrder);
@@ -88,6 +94,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
             omsOrder.setTotalAmount(new BigDecimal(totalAmount));
             omsOrder.setPayAmount(new BigDecimal(totalAmount));
             omsOrderMapper.insert(omsOrder);
+            orderIds.add(omsOrder.getId());
 
             OmsOrderItem omsOrderItem = new OmsOrderItem();
             BeanUtils.copyProperties(orderItemDto, omsOrderItem);
@@ -102,6 +109,8 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         if (!result) {
             throw new RuntimeException("库存不足");
         }
+        boolean cancelMessageResult = orderCancelMessageSender.sendOrderCancelMessage(orderIds, 2);
+        log.info("addOrder 发送超时未支付取消订单消息 结果：{}", cancelMessageResult);
     }
 
     private String generateOrderNumber() {
@@ -134,5 +143,34 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         }
         log.info("getOrderList 用户查询订单结束");
         return omsOrderVos;
+    }
+
+    @Override
+    @Transactional
+    public void orderTimeOutCancel() {
+        log.info("orderTimeOutCancel 取消超时未支付的订单");
+        QueryWrapper<OmsOrder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("status", OrderConstant.OrderStatusEnum.PENDING_PAYMENT.getValue());
+        List<OmsOrder> omsOrders = omsOrderMapper.selectList(queryWrapper);
+        List<OmsOrder> updateStatusOrderList = new ArrayList<>();
+        Date date = new Date();
+        for (OmsOrder omsOrder : omsOrders) {
+            // 未支付，且距离订单创建已超过2分钟，取消订单
+            long minute = (date.getTime() - omsOrder.getCreateTime().getTime()) / 6000;
+            if ( minute > 2 ) {
+                log.info("orderTimeOutCancel 订单【{}】超时未支付，取消", omsOrder.getOrderNumber());
+                OmsOrder order = new OmsOrder();
+                order.setId(omsOrder.getId());
+                order.setStatus(OrderConstant.OrderStatusEnum.INVALID.getValue());
+                updateStatusOrderList.add(order);
+            }
+        }
+        if (CollectionUtils.isEmpty(updateStatusOrderList)) {
+            log.info("orderTimeOutCancel 没有超时未支付的订单");
+            return;
+        }
+        // 查询明细，还原库存
+        log.info("orderTimeOutCancel 存在超时未支付的订单 取消");
+        this.updateBatchById(updateStatusOrderList);
     }
 }
