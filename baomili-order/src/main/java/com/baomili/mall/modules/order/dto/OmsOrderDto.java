@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -42,22 +41,22 @@ public class OmsOrderDto implements Serializable {
     private String orderNumber;
 
     @ApiModelProperty(value = "订单总金额")
-    private BigDecimal totalAmount;
+    private Double totalAmount;
 
     @ApiModelProperty(value = "应付金额（实际支付金额）")
-    private BigDecimal payAmount;
+    private Double payAmount;
 
     @ApiModelProperty(value = "运费金额")
-    private BigDecimal freightAmount;
+    private Double freightAmount;
 
     @ApiModelProperty(value = "促销优惠金额（促销价、满减、阶梯价）")
-    private BigDecimal promotionAmount;
+    private Double promotionAmount;
 
     @ApiModelProperty(value = "积分抵扣金额")
-    private BigDecimal integrationAmount;
+    private Double integrationAmount;
 
     @ApiModelProperty(value = "管理员后台调整订单使用的折扣金额")
-    private BigDecimal discountAmount;
+    private Double discountAmount;
 
     @ApiModelProperty(value = "下单时使用的积分")
     private Integer useIntegration;

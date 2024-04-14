@@ -1,4 +1,4 @@
-package com.baomili.mall.modules.product.vo.rocketmq;
+package com.baomili.mall.modules.common.vo.rocketmq;
 
 import lombok.Data;
 

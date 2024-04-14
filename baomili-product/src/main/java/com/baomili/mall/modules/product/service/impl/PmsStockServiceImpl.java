@@ -1,11 +1,11 @@
 package com.baomili.mall.modules.product.service.impl;
 
+import com.baomili.mall.modules.common.vo.rocketmq.ReduceStockEvent;
+import com.baomili.mall.modules.common.vo.rocketmq.ReduceStockVo;
 import com.baomili.mall.modules.product.model.PmsStock;
 import com.baomili.mall.modules.product.mapper.PmsStockMapper;
 import com.baomili.mall.modules.product.service.PmsStockService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomili.mall.modules.product.vo.rocketmq.ReduceStockEvent;
-import com.baomili.mall.modules.product.vo.rocketmq.ReduceStockVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -38,9 +38,9 @@ public class PmsStockServiceImpl extends ServiceImpl<PmsStockMapper, PmsStock> i
 //            return;
 //        }
 //
-//        List<ReduceStockVo> reduceStockVos = reduceStockEvent.getReduceStockVos();
+        List<ReduceStockVo> reduceStockVos = reduceStockEvent.getReduceStockVos();
 //        // 扣减库存
-//        pmsStockMapper.updatePmsStock(reduceStockVos);
+        pmsStockMapper.updatePmsStock(reduceStockVos);
         log.info("reduceStock 扣减库存成功");
     }
 }

@@ -1,6 +1,8 @@
 package com.baomili.mall.modules.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomili.mall.modules.common.utils.DoubleUtil;
+import com.baomili.mall.modules.order.constant.RedisKey;
 import com.baomili.mall.modules.order.dto.OmsOrderDto;
 import com.baomili.mall.modules.order.dto.OmsOrderItemDto;
 import com.baomili.mall.modules.order.dto.OrderQueryParamDto;
@@ -12,11 +14,13 @@ import com.baomili.mall.modules.order.service.OmsOrderItemService;
 import com.baomili.mall.modules.order.service.OmsOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomili.mall.modules.order.vo.OmsOrderVo;
+import com.baomili.mall.modules.redis.utils.RedisSingleUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -24,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +55,10 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
 
     @Resource
     private ReduceStockMessageSender reduceStockMessageSender;
+
+    @Resource
+    private RedisTemplate redisTemplate;
+
     @Override
     @Transactional
     public void addOrder(OmsOrderDto omsOrderDto) {
@@ -75,12 +84,16 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
             OmsOrder omsOrder = new OmsOrder();
             BeanUtils.copyProperties(omsOrderDto, omsOrder);
             omsOrder.setOrderNumber(generateOrderNumber());
+            double totalAmount = DoubleUtil.add(orderItemDto.getPrice(), orderItemDto.getQuantity().doubleValue());
+            omsOrder.setTotalAmount(new BigDecimal(totalAmount));
+            omsOrder.setPayAmount(new BigDecimal(totalAmount));
             omsOrderMapper.insert(omsOrder);
 
             OmsOrderItem omsOrderItem = new OmsOrderItem();
             BeanUtils.copyProperties(orderItemDto, omsOrderItem);
             omsOrderItem.setOrderId(omsOrder.getId());
             omsOrderItems.add(omsOrderItem);
+
         }
         omsOrderItemService.saveBatch(omsOrderItems);
         log.info("addOrder 下单成功");
@@ -90,7 +103,9 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
 
     private String generateOrderNumber() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        return simpleDateFormat.format(new Date());
+        String format = simpleDateFormat.format(new Date());
+        Long increment = redisTemplate.opsForValue().increment(RedisKey.ORDER_NUMBER);
+        return format + increment;
     }
 
     @Override

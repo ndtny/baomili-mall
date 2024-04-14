@@ -24,9 +24,9 @@
 
     <update id="updatePmsStock">
         update pms_stock set
-        lock_stock = CASE product_id
+        stock = CASE product_id
         <foreach collection="reduceStockVos" item="item">
-            WHEN #{item.productId} THEN lock_stock - #{item.reduceQuantity}
+            WHEN #{item.productId} THEN stock - #{item.reduceQuantity}
         </foreach>
         END
         where product_id in

@@ -1,8 +1,8 @@
 package com.baomili.mall.modules.product.service;
 
+import com.baomili.mall.modules.common.vo.rocketmq.ReduceStockEvent;
 import com.baomili.mall.modules.product.model.PmsStock;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomili.mall.modules.product.vo.rocketmq.ReduceStockEvent;
 
 /**
  * <p>

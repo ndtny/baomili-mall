@@ -1,8 +1,9 @@
 package com.baomili.mall.modules.product.mapper;
 
+import com.baomili.mall.modules.common.vo.rocketmq.ReduceStockVo;
 import com.baomili.mall.modules.product.model.PmsStock;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomili.mall.modules.product.vo.rocketmq.ReduceStockVo;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author David
  * @since 2024-03-23
  */
+@Mapper
 public interface PmsStockMapper extends BaseMapper<PmsStock> {
 
     int isExistTx(@Param("transactionId") String transactionId);

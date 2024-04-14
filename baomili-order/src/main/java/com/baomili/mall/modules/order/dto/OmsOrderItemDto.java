@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -49,7 +48,7 @@ public class OmsOrderItemDto implements Serializable {
     private String couponName;
 
     @ApiModelProperty(value = "优惠券抵扣金额")
-    private BigDecimal couponAmount;
+    private Double couponAmount;
 
     @ApiModelProperty(value = "阶梯优惠活动id")
     private Long ladderId;
@@ -58,7 +57,7 @@ public class OmsOrderItemDto implements Serializable {
     private String ladderName;
 
     @ApiModelProperty(value = "阶梯优惠活动抵扣金额")
-    private BigDecimal ladderAmount;
+    private Double ladderAmount;
 
     @ApiModelProperty(value = "满减活动id")
     private Long fullReductionId;
@@ -67,16 +66,16 @@ public class OmsOrderItemDto implements Serializable {
     private String fullReductionName;
 
     @ApiModelProperty(value = "满减活动抵扣金额")
-    private BigDecimal fullReductionAmount;
+    private Double fullReductionAmount;
 
     @ApiModelProperty(value = "积分优惠金额")
-    private BigDecimal integrationAmount;
+    private Double integrationAmount;
 
     @ApiModelProperty(value = "该商品经过优惠后的金额")
-    private BigDecimal realAmount;
+    private Double realAmount;
 
     @ApiModelProperty(value = "销售价格")
-    private BigDecimal price;
+    private Double price;
 
     @ApiModelProperty(value = "购买数量")
     private Integer quantity;
