@@ -2,6 +2,10 @@ package com.baomili.mall.modules.order.mapper;
 
 import com.baomili.mall.modules.order.model.OmsOrderItem;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,6 +15,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author David
  * @since 2024-04-05
  */
+@Mapper
 public interface OmsOrderItemMapper extends BaseMapper<OmsOrderItem> {
 
+    List<OmsOrderItem> getOrderItemListByOrderIds(@Param("orderIds") List<Long> orderIds);
 }

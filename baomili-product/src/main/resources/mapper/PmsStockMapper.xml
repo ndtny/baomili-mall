@@ -22,11 +22,34 @@
 
     </select>
 
-    <update id="updatePmsStock">
+    <update id="reducePmsStock">
         update pms_stock set
         stock = CASE product_id
         <foreach collection="reduceStockVos" item="item">
             WHEN #{item.productId} THEN stock - #{item.reduceQuantity}
+        </foreach>
+        END
+        where product_id in
+        <foreach collection="reduceStockVos" item="item" open="(" close=")" separator=",">
+            #{item.productId}
+        </foreach>
+    </update>
+
+    <select id="getProductStock" resultType="com.baomili.mall.modules.product.vo.PmsStockVo">
+        select product_id, product_number, stock, lock_stock
+        from pms_stock
+        where product_id in
+        <foreach collection="productIds" item="productId" separator="," open="(" close=")">
+            #{productId}
+        </foreach>
+        and delete_status = 0
+    </select>
+
+    <update id="recoverPmsStock">
+        update pms_stock set
+        stock = CASE product_id
+        <foreach collection="reduceStockVos" item="item">
+            WHEN #{item.productId} THEN stock + #{item.reduceQuantity}
         </foreach>
         END
         where product_id in

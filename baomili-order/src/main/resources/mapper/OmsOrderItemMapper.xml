@@ -30,4 +30,11 @@
         <result column="modified_time" property="modifiedTime" />
     </resultMap>
 
+    <select id="getOrderItemListByOrderIds" resultMap="BaseResultMap">
+        select * from oms_order_item where order_id in
+        <foreach collection="orderIds" item="orderId" separator="," open="(" close=")">
+            #{orderId}
+        </foreach>
+    </select>
+
 </mapper>

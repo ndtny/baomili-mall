@@ -2,11 +2,13 @@ package com.baomili.mall.modules.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomili.mall.modules.common.utils.DoubleUtil;
+import com.baomili.mall.modules.common.vo.rocketmq.ReduceStockVo;
 import com.baomili.mall.modules.order.constant.OrderConstant;
 import com.baomili.mall.modules.order.constant.RedisKey;
 import com.baomili.mall.modules.order.dto.OmsOrderDto;
 import com.baomili.mall.modules.order.dto.OmsOrderItemDto;
 import com.baomili.mall.modules.order.dto.OrderQueryParamDto;
+import com.baomili.mall.modules.order.feign.PmsProductStockFeignApi;
 import com.baomili.mall.modules.order.model.OmsOrder;
 import com.baomili.mall.modules.order.mapper.OmsOrderMapper;
 import com.baomili.mall.modules.order.model.OmsOrderItem;
@@ -60,6 +62,9 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
 
     @Resource
     private OrderCancelMessageSender orderCancelMessageSender;
+
+    @Resource
+    private PmsProductStockFeignApi pmsProductStockFeignApi;
 
     @Resource
     private RedisTemplate redisTemplate;
@@ -153,6 +158,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         queryWrapper.eq("status", OrderConstant.OrderStatusEnum.PENDING_PAYMENT.getValue());
         List<OmsOrder> omsOrders = omsOrderMapper.selectList(queryWrapper);
         List<OmsOrder> updateStatusOrderList = new ArrayList<>();
+        List<Long> orderIds = new ArrayList<>();
         Date date = new Date();
         for (OmsOrder omsOrder : omsOrders) {
             // 未支付，且距离订单创建已超过2分钟，取消订单
@@ -163,6 +169,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
                 order.setId(omsOrder.getId());
                 order.setStatus(OrderConstant.OrderStatusEnum.INVALID.getValue());
                 updateStatusOrderList.add(order);
+                orderIds.add(omsOrder.getId());
             }
         }
         if (CollectionUtils.isEmpty(updateStatusOrderList)) {
@@ -170,6 +177,16 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
             return;
         }
         // 查询明细，还原库存
+        List<OmsOrderItem> omsOrderItems = omsOrderItemService.getOrderItemListByOrderIds(orderIds);
+        // 查询明细 还原库存
+        List<ReduceStockVo> reduceStockVos = new ArrayList<>();
+        for (OmsOrderItem omsOrderItem : omsOrderItems) {
+            ReduceStockVo reduceStockVo = new ReduceStockVo();
+            reduceStockVo.setProductId(omsOrderItem.getProductId());
+            reduceStockVo.setReduceQuantity(omsOrderItem.getQuantity());
+            reduceStockVos.add(reduceStockVo);
+        }
+        pmsProductStockFeignApi.recoverStock(reduceStockVos);
         log.info("orderTimeOutCancel 存在超时未支付的订单 取消");
         this.updateBatchById(updateStatusOrderList);
     }
