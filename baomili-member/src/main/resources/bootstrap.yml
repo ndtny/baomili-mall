@@ -8,7 +8,7 @@ spring:
     nacos:
       config:
         server-addr: ${nacos.url} #配置中心的地址
-        file-extension: yaml #配置文件结尾的配置
+        file-extension: yml #配置文件结尾的配置
         prefix: baomili-member
         group: DEFAULT_GROUP
       discovery:
