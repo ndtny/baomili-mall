@@ -7,6 +7,7 @@ import com.baomili.mall.modules.order.dto.OrderQueryParamDto;
 import com.baomili.mall.modules.order.model.OmsOrder;
 import com.baomili.mall.modules.order.mapper.OmsOrderMapper;
 import com.baomili.mall.modules.order.model.OmsOrderItem;
+import com.baomili.mall.modules.order.rocketmq.ReduceStockMessageSender;
 import com.baomili.mall.modules.order.service.OmsOrderItemService;
 import com.baomili.mall.modules.order.service.OmsOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -48,7 +49,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
     private OmsOrderItemService omsOrderItemService;
 
     @Resource
-    private RocketMQTemplate rocketMQTemplate;
+    private ReduceStockMessageSender reduceStockMessageSender;
     @Override
     @Transactional
     public void addOrder(OmsOrderDto omsOrderDto) {
@@ -84,9 +85,7 @@ public class OmsOrderServiceImpl extends ServiceImpl<OmsOrderMapper, OmsOrder> i
         omsOrderItemService.saveBatch(omsOrderItems);
         log.info("addOrder 下单成功");
         // 使用MQ异步扣减库存
-        omsOrderItems.forEach(order -> {
-            rocketMQTemplate.convertAndSend("order:deduceStock", MessageBuilder.withPayload(order.getProductId()+":"+order.getQuantity()).build());
-        });
+        reduceStockMessageSender.sendReduceStockMessage(omsOrderDto.getId(), omsOrderItems);
     }
 
     private String generateOrderNumber() {

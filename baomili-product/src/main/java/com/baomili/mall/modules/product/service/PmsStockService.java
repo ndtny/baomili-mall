@@ -2,6 +2,7 @@ package com.baomili.mall.modules.product.service;
 
 import com.baomili.mall.modules.product.model.PmsStock;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomili.mall.modules.product.vo.rocketmq.ReduceStockEvent;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PmsStockService extends IService<PmsStock> {
 
+    void reduceStock(ReduceStockEvent reduceStockEvent);
 }
